@@ -64,6 +64,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -91,13 +96,15 @@
   <ItemGroup>
     <QtRcc Include="wireframe.qrc" />
     <QtUic Include="wireframe.ui" />
-    <QtMoc Include="Basic3D.h" />
-    <ClCompile Include="Basic3D.cpp" />
+    <QtMoc Include="basic3d.h" />
+    <ClCompile Include="basic3d.cpp" />
+    <ClCompile Include="cubewireframe.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="wireframe.ico" />
     <ResourceCompile Include="wireframe.rc" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="cubewireframe.h" />
     <ClInclude Include="points.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

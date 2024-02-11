@@ -1,10 +1,10 @@
-#include "wireframe.h"
+#include "cubewireframe.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    wireframe w;
+    CubeWireframe w;
     w.show();
     return a.exec();
 }

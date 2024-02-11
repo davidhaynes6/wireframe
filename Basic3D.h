@@ -16,7 +16,15 @@ struct IntPair {
 			this->i = j; this->j = i;
 		}
 	}
+
+	// It might be beneficial to ensure the operator< is friend to allow access to private members if any
+	friend bool operator<(const IntPair& lhs, const IntPair& rhs) {
+		if (lhs.i < rhs.i) return true;
+		else if (lhs.i == rhs.i) return lhs.j < rhs.j;
+		return false;
+	}
 };
+
 
 struct Polygon3D {
 	std::vector<int> nrs; // vertex numbers (n elements)
@@ -62,7 +70,7 @@ public:
 	}
 	bool different(int i, int j) const;
 	void mousePressEvent(QMouseEvent* event) override;
-	void mousePressRelease(QMouseEvent* event) override;
+	void mouseReleaseEvent(QMouseEvent* event) override;
 	void resizeEvent(QResizeEvent* e) override;
 
 public:
@@ -72,17 +80,15 @@ public:
 	EdgeSet edges;
 	std::vector<Polygon3D> polyList;
 	bool defaultPaint = true;
-	qreal xNear, zFar, eps1;
+	qreal zNear, zFar, eps1;
 
 public slots:
 	void open();
 	void incrDist();
-	void descrDist();
+	void decrDist();
 	void resetViewpoint();
 	void angleChange();
-};
-
 
 private:
-    Ui::wireframeClass ui;
+    //Ui::wireframeClass ui;
 };
